@@ -12,10 +12,9 @@ public class CourseService {
 	@Autowired
 	private CourseRepository courseRepository;
 	
-	public List<Course> getAllCourses(String id){
+	public List<Course> getAllCourses(String topicId){
 		List<Course> courses = new ArrayList<>();
-		//The method findAll returns an iterable, then for each element we are 'adding' it to 'topics'
-		courseRepository.findAll().forEach(courses::add);
+		courseRepository.findByTopicId(topicId).forEach(courses::add);
 		return courses;
 	}
 	
